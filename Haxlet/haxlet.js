@@ -37,8 +37,8 @@
 	function initMyBookmarklet() {
 		(window.myBookmarklet = function() {
 			// your JavaScript code goes here!
-			$('head').load('https://raw.github.com/LimitedWard/haxlet/master/haxlet-style.html');
-			$('body').load('https://raw.github.com/LimitedWard/haxlet/master/haxlet-divs.html');
+			$('head').load('http://limitedward.github.com/Haxlet/haxlet-style.html');
+			$('body').load('http://limitedward.github.com/Haxlet/haxlet-divs.html');
 			
 
 var blueScore = 0;
