@@ -37,14 +37,7 @@
 	function initMyBookmarklet() {
 		(window.myBookmarklet = function() {
 			// your JavaScript code goes here!
-			
-			$('body').append('<div id="scoreboard"></div>');
-			$('#scoreboard').html('        	<div id="topBar">Haxlet Scoreboard 1.0 - Copyright 2013 Jason Kraft <span id="announcer"></span><span id="swapper">SWAP TEAM</span></div>        	<div id="scoreleft" contenteditable="true">Blue Team</div>                <div id="scorecenter">        	        	<div id="bluescore">            	<div id="incrementb">&#8743;</div>                <div id="scorepieceb">0</div>                <div id="decrementb">&#8744;</div>            </div>                        <div id="timer">            	<div id="pause"><a href="#">Play/Pause</a></div>            	<div id="timepiece">5:00</div>                <div id="reset"><a href="#">Reset</a></div>            </div>                        <div id="redscore">            	<div id="incrementr">&#8743;</div>                <div id="scorepiecer">0</div>                <div id="decrementr">&#8744;</div>            </div>                    </div>                <div id="scoreright" contenteditable="true">Red Team</div>            ').ready(function(e) {
-                
-            
-			//$('#scoreboard').draggable();
-
-$('head').append('<style type="text/css">\
+			$('head').append('<style type="text/css">\
 \
 	#scoreboard\
 	{\
@@ -215,6 +208,12 @@ $('head').append('<style type="text/css">\
 		text-outline:1px solid #fff;\
 	}\
 </style>');
+			
+			$('body').append('<div id="scoreboard"></div>');
+			$('#scoreboard').html('        	<div id="topBar">Haxlet Scoreboard 1.0 - Copyright 2013 Jason Kraft <span id="announcer"></span><span id="swapper">SWAP TEAM</span></div>        	<div id="scoreleft" contenteditable="true">Blue Team</div>                <div id="scorecenter">        	        	<div id="bluescore">            	<div id="incrementb">&#8743;</div>                <div id="scorepieceb">0</div>                <div id="decrementb">&#8744;</div>            </div>                        <div id="timer">            	<div id="pause"><a href="#">Play/Pause</a></div>            	<div id="timepiece">5:00</div>                <div id="reset"><a href="#">Reset</a></div>            </div>                        <div id="redscore">            	<div id="incrementr">&#8743;</div>                <div id="scorepiecer">0</div>                <div id="decrementr">&#8744;</div>            </div>                    </div>                <div id="scoreright" contenteditable="true">Red Team</div>            ').ready(function(e) {
+                
+            
+			//$('#scoreboard').draggable();
 
 var blueScore = 0;
 var redScore = 0;
