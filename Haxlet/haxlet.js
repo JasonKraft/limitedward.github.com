@@ -23,7 +23,7 @@
 		var done1 = false;
 		var script1 = document.createElement("script");
 		script1.src = "http://code.jquery.com/ui/" + v1 + "/jquery-ui.js";
-		script1.onload = script.onreadystatechange = function(){
+		script1.onload = script1.onreadystatechange = function(){
 			if (!done && (!this.readyState || this.readyState == "loaded" || this.readyState == "complete")) {
 				done = true;
 				initMyBookmarklet();
