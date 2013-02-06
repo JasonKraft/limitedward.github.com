@@ -219,7 +219,7 @@
 </style>');
 			
 			$('body').append('<div id="scoreboard"></div>');
-			$('#scoreboard').html('        	<div id="topBar">Haxlet Scoreboard 1.0 - Copyright 2013 Jason Kraft <span id="announcer"></span><span id="swapper">SWAP TEAM</span></div>        	<div id="scoreleft" contenteditable="true">Blue Team</div>                <div id="scorecenter">        	        	<div id="bluescore">            	<div id="incrementb">&#8743;</div>                <div id="scorepieceb">0</div>                <div id="decrementb">&#8744;</div>            </div>                        <div id="timer">            	<div id="pause"><a href="#">Play/Pause</a></div>            	<div id="timepiece">5:00</div>                <div id="reset"><a href="#">Reset</a></div>            </div>                        <div id="redscore">            	<div id="incrementr">&#8743;</div>                <div id="scorepiecer">0</div>                <div id="decrementr">&#8744;</div>            </div>                    </div>                <div id="scoreright" contenteditable="true">Red Team</div>            ').ready(function(e) {
+			$('#scoreboard').html('        	<div id="topBar">Haxlet Scoreboard 1.0 - Copyright 2013 Jason Kraft <span id="announcer"></span><span id="swapper">SWAP TEAM</span></div>        	<div id="scoreleft" contenteditable="true">Blue Team</div>                <div id="scorecenter">        	        	<div id="bluescore">            	<div id="incrementb">&#8743;</div>                <div id="scorepieceb">0</div>                <div id="decrementb">&#8744;</div>            </div>                        <div id="timer">            	<div id="pause"><a href="#">Play/Pause</a></div>            	<div id="timepiece">0:00</div>                <div id="reset"><a href="#">Reset</a></div>            </div>                        <div id="redscore">            	<div id="incrementr">&#8743;</div>                <div id="scorepiecer">0</div>                <div id="decrementr">&#8744;</div>            </div>                    </div>                <div id="scoreright" contenteditable="true">Red Team</div>            ').ready(function(e) {
                 
             
 			//$('#scoreboard').draggable();
@@ -252,7 +252,7 @@ if (e.which == 13)
 	return e.which != 13;
 });
 $("#reset").click(function(e){
-	minutes = 5;
+	minutes = 0;
 	seconds = 0;
 	$("#timepiece").text("5:00");
 	interval1 = clearInterval(interval1);
@@ -291,7 +291,7 @@ $("#decrementr").click(function(){
 	$("#scorepiecer").fadeOut("fast").text("" + redScore).fadeIn("fast");
 });
 
-var minutes = 5;
+var minutes = 0;
 var seconds = 0;
 var secPad = "";
 
@@ -300,17 +300,18 @@ function pad (str, max) {
 }
 
 function timer(){
-	seconds--;
-	if (seconds < 0)
-	{
-		seconds = 59;
-		minutes--;
-	}
-	if (minutes < 0)
+	seconds++;
+	if (seconds > 59)
 	{
 		seconds = 0;
-		minutes = 0;
+		minutes++;
+	}
+	if (minutes > 4)
+	{
+		seconds = 0;
+		minutes = 5;
 		interval1 = clearInterval(interval1);
+		$("#timepiece").fadeOut("fast").fadeIn("fast").fadeOut("fast").fadeIn("fast");
 	}
 	secPad = pad("" + seconds, 2);
 	
@@ -351,9 +352,9 @@ $('#swapper').click(function() {
 	$("#scorepiecer").fadeOut("fast").text("" + redScore).fadeIn("fast");
 	interval1 = clearInterval(interval1);
 	paused = true;
-	minutes = 5;
+	minutes = 0;
 	seconds = 0;
-	$("#timepiece").fadeOut("fast").text("5:00").fadeIn("fast");
+	$("#timepiece").fadeOut("fast").text("0:00").fadeIn("fast");
 	$('#announcer').hide().text("| Teams switched").fadeIn("fast").delay(200).fadeOut("fast");
 });});
 
