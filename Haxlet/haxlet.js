@@ -214,7 +214,7 @@ $('head').append('<style type="text/css">\
 	}\
 </style>');
 
-var blueScore = 0;
+$('#scoreboard').ready(function(){var blueScore = 0;
 var redScore = 0;
 var paused = false;
 
@@ -345,7 +345,7 @@ $('#swapper').click(function() {
 	seconds = 0;
 	$("#timepiece").fadeOut("fast").text("5:00").fadeIn("fast");
 	$('#announcer').hide().text("| Teams switched").fadeIn("fast").delay(200).fadeOut("fast");
-});
+});});
 
 	})();
 	}
