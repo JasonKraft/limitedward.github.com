@@ -11,24 +11,32 @@
 	if (window.jQuery === undefined || window.jQuery.fn.jquery < v) {
 		var done = false;
 		var script = document.createElement("script");
+		var done1 = false;
+		var script1 = document.createElement("script");
 		script.src = "http://ajax.googleapis.com/ajax/libs/jquery/" + v + "/jquery.min.js";
 		script.onload = script.onreadystatechange = function(){
 			if (!done && (!this.readyState || this.readyState == "loaded" || this.readyState == "complete")) {
 				done = true;
-				initMyBookmarklet();
+				//initMyBookmarklet();
+				script1.src = "http://code.jquery.com/ui/" + v1 + "/jquery-ui.js";
+				script1.onload = script1.onreadystatechange = function(){
+				if (!done1 && (!this.readyState || this.readyState == "loaded" || this.readyState == "complete")) {
+					done1 = true;
+					initMyBookmarklet();
+				}
+		};
+		document.getElementsByT
 			}
 		};
 		document.getElementsByTagName("head")[0].appendChild(script);
 		
-		var done1 = false;
-		var script1 = document.createElement("script");
-		script1.src = "http://code.jquery.com/ui/" + v1 + "/jquery-ui.js";
-		script1.onload = script1.onreadystatechange = function(){
-			if (!done && (!this.readyState || this.readyState == "loaded" || this.readyState == "complete")) {
-				done = true;
-				initMyBookmarklet();
-			}
-		};
+		//script1.src = "http://code.jquery.com/ui/" + v1 + "/jquery-ui.js";
+		//script1.onload = script1.onreadystatechange = function(){
+			//if (!done && (!this.readyState || this.readyState == "loaded" || this.readyState == "complete")) {
+			//	done = true;
+			//	initMyBookmarklet();
+			//}
+		//};
 		document.getElementsByTagName("head")[0].appendChild(script1);
 	} else {
 		initMyBookmarklet();
