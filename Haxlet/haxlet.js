@@ -39,10 +39,183 @@
 			// your JavaScript code goes here!
 			//$('head').load('http://limitedward.github.com/Haxlet/haxlet-style.html');
 			//$('body').load('http://limitedward.github.com/Haxlet/haxlet-divs.html');
-			$('head').append('<style type="text/css">	#scoreboard	{		position:absolute;		z-index:1;		border: 2px solid #000;		font-family:Arial, Helvetica, sans-serif;		font-size:18px;		background-color:#fff;		height:95px;		width:500px;				box-shadow:0px 0px 10px rgba(0,0,0,.5);		-moz-box-shadow:0px 0px 10px rgba(0,0,0,.5);		-webkit-box-shadow:0px 0px 10px rgba(0,0,0,.5);		-o-box-shadow:0px 0px 10px rgba(0,0,0,.5);				background-image: linear-gradient(bottom, rgb(133,133,133) 33%, rgb(240,240,240) 84%);		background-image: -o-linear-gradient(bottom, rgb(133,133,133) 33%, rgb(240,240,240) 84%);		background-image: -moz-linear-gradient(bottom, rgb(133,133,133) 33%, rgb(240,240,240) 84%);		background-image: -webkit-linear-gradient(bottom, rgb(133,133,133) 33%, rgb(240,240,240) 84%);		background-image: -ms-linear-gradient(bottom, rgb(133,133,133) 33%, rgb(240,240,240) 84%);				background-image: -webkit-gradient(			linear,			left bottom,			left top,			color-stop(0.33, rgb(133,133,133)),			color-stop(0.84, rgb(240,240,240))		);}	#topBar	{		display:block;		background-color:#666;		color:#fff;		font-size:10px;		text-shadow:0px -1px 1px #000;		height:18px;		cursor:move;	line-height:20px;		padding-left: 10px;		padding-right:10px;				border-bottom:1px solid rgb(51,51,51);		background-image: linear-gradient(bottom, rgb(36,36,36) 17%, rgb(122,122,122) 80%);		background-image: -o-linear-gradient(bottom, rgb(36,36,36) 17%, rgb(122,122,122) 80%);		background-image: -moz-linear-gradient(bottom, rgb(36,36,36) 17%, rgb(122,122,122) 80%);		background-image: -webkit-linear-gradient(bottom, rgb(36,36,36) 17%, rgb(122,122,122) 80%);		background-image: -ms-linear-gradient(bottom, rgb(36,36,36) 17%, rgb(122,122,122) 80%);				background-image: -webkit-gradient(			linear,			left bottom,		left top,		color-stop(0.17, rgb(36,36,36)),			color-stop(0.8, rgb(122,122,122))		);	}	#swapper	{		float:right;		cursor:pointer;		height:18px;	}	#scoreleft, #scoreright, #scorecenter, #bluescore, #redscore, #timer	{		float:left;	}#scoreleft	{		background-color:#36C;		width:30%;		height:75px;		text-align:center;		line-height:75px;	/*padding-top:27px;*/	color:#fff;		font-weight:bold;				background-image: linear-gradient(bottom, rgb(22,80,196) 33%, rgb(136,156,235) 84%);		background-image: -o-linear-gradient(bottom, rgb(22,80,196) 33%, rgb(136,156,235) 84%);		background-image: -moz-linear-gradient(bottom, rgb(22,80,196) 33%, rgb(136,156,235) 84%);		background-image: -webkit-linear-gradient(bottom, rgb(22,80,196) 33%, rgb(136,156,235) 84%);		background-image: -ms-linear-gradient(bottom, rgb(22,80,196) 33%, rgb(136,156,235) 84%);				background-image: -webkit-gradient(			linear,			left bottom,			left top,			color-stop(0.33, rgb(22,80,196)),			color-stop(0.84, rgb(136,156,235))		);				border-right:1px solid rgb(51,51,51);		border-top:1px solid rgb(204,204,204);	}	#scoreright	{		background-color:#F30;		width:30%;		height:75px;		text-align:center;		line-height:75px;		/*padding-top:27px;*/		color:#fff;		font-weight:bold;				background-image: linear-gradient(bottom, rgb(153,0,0) 33%, rgb(237,109,109) 84%);		background-image: -o-linear-gradient(bottom, rgb(153,0,0) 33%, rgb(237,109,109) 84%);		background-image: -moz-linear-gradient(bottom, rgb(153,0,0) 33%, rgb(237,109,109) 84%);		background-image: -webkit-linear-gradient(bottom, rgb(153,0,0) 33%, rgb(237,109,109) 84%);		background-image: -ms-linear-gradient(bottom, rgb(153,0,0) 33%, rgb(237,109,109) 84%);				background-image: -webkit-gradient(		linear,			left bottom,		left top,			color-stop(0.33, rgb(153,0,0)),		color-stop(0.84, rgb(237,109,109))		);				border-left:1px solid rgb(204,204,204);		border-top:1px solid rgb(204,204,204);	}	#scorecenter	{		width:39.2%;		height:75px;		text-align:center;		border-left:1px solid rgb(204,204,204);		border-right:1px solid rgb(51,51,51);		-webkit-touch-callout: none;		-webkit-user-select: none;		-khtml-user-select: none;		-moz-user-select: none;	-ms-user-select: none;		user-select: none;		border-top:1px solid rgb(204,204,204);	}	#bluescore, #redscore	{		height:75px;		width:30%;	}	#timer	{		height:75px;		width:40%;	}	#incrementb, #decrementb, #incrementr, #decrementr, #pause, #reset	{		height:20px;	}	#incrementb, #incrementr	{		cursor:n-resize;	}	#decrementb, #decrementr	{		cursor:s-resize;	}	#scorepieceb, #scorepiecer, #timepiece	{		height:25px;		padding-top:10px;		font-weight:bold;		text-outline:1px solid #fff;	}</style>');
+			//$('head').append('<style type="text/css">	#scoreboard	{		position:absolute;		z-index:1;		border: 2px solid #000;		font-family:Arial, Helvetica, sans-serif;		font-size:18px;		background-color:#fff;		height:95px;		width:500px;				box-shadow:0px 0px 10px rgba(0,0,0,.5);		-moz-box-shadow:0px 0px 10px rgba(0,0,0,.5);		-webkit-box-shadow:0px 0px 10px rgba(0,0,0,.5);		-o-box-shadow:0px 0px 10px rgba(0,0,0,.5);				background-image: linear-gradient(bottom, rgb(133,133,133) 33%, rgb(240,240,240) 84%);		background-image: -o-linear-gradient(bottom, rgb(133,133,133) 33%, rgb(240,240,240) 84%);		background-image: -moz-linear-gradient(bottom, rgb(133,133,133) 33%, rgb(240,240,240) 84%);		background-image: -webkit-linear-gradient(bottom, rgb(133,133,133) 33%, rgb(240,240,240) 84%);		background-image: -ms-linear-gradient(bottom, rgb(133,133,133) 33%, rgb(240,240,240) 84%);				background-image: -webkit-gradient(			linear,			left bottom,			left top,			color-stop(0.33, rgb(133,133,133)),			color-stop(0.84, rgb(240,240,240))		);}	#topBar	{		display:block;		background-color:#666;		color:#fff;		font-size:10px;		text-shadow:0px -1px 1px #000;		height:18px;		cursor:move;	line-height:20px;		padding-left: 10px;		padding-right:10px;				border-bottom:1px solid rgb(51,51,51);		background-image: linear-gradient(bottom, rgb(36,36,36) 17%, rgb(122,122,122) 80%);		background-image: -o-linear-gradient(bottom, rgb(36,36,36) 17%, rgb(122,122,122) 80%);		background-image: -moz-linear-gradient(bottom, rgb(36,36,36) 17%, rgb(122,122,122) 80%);		background-image: -webkit-linear-gradient(bottom, rgb(36,36,36) 17%, rgb(122,122,122) 80%);		background-image: -ms-linear-gradient(bottom, rgb(36,36,36) 17%, rgb(122,122,122) 80%);				background-image: -webkit-gradient(			linear,			left bottom,		left top,		color-stop(0.17, rgb(36,36,36)),			color-stop(0.8, rgb(122,122,122))		);	}	#swapper	{		float:right;		cursor:pointer;		height:18px;	}	#scoreleft, #scoreright, #scorecenter, #bluescore, #redscore, #timer	{		float:left;	}#scoreleft	{		background-color:#36C;		width:30%;		height:75px;		text-align:center;		line-height:75px;	/*padding-top:27px;*/	color:#fff;		font-weight:bold;				background-image: linear-gradient(bottom, rgb(22,80,196) 33%, rgb(136,156,235) 84%);		background-image: -o-linear-gradient(bottom, rgb(22,80,196) 33%, rgb(136,156,235) 84%);		background-image: -moz-linear-gradient(bottom, rgb(22,80,196) 33%, rgb(136,156,235) 84%);		background-image: -webkit-linear-gradient(bottom, rgb(22,80,196) 33%, rgb(136,156,235) 84%);		background-image: -ms-linear-gradient(bottom, rgb(22,80,196) 33%, rgb(136,156,235) 84%);				background-image: -webkit-gradient(			linear,			left bottom,			left top,			color-stop(0.33, rgb(22,80,196)),			color-stop(0.84, rgb(136,156,235))		);				border-right:1px solid rgb(51,51,51);		border-top:1px solid rgb(204,204,204);	}	#scoreright	{		background-color:#F30;		width:30%;		height:75px;		text-align:center;		line-height:75px;		/*padding-top:27px;*/		color:#fff;		font-weight:bold;				background-image: linear-gradient(bottom, rgb(153,0,0) 33%, rgb(237,109,109) 84%);		background-image: -o-linear-gradient(bottom, rgb(153,0,0) 33%, rgb(237,109,109) 84%);		background-image: -moz-linear-gradient(bottom, rgb(153,0,0) 33%, rgb(237,109,109) 84%);		background-image: -webkit-linear-gradient(bottom, rgb(153,0,0) 33%, rgb(237,109,109) 84%);		background-image: -ms-linear-gradient(bottom, rgb(153,0,0) 33%, rgb(237,109,109) 84%);				background-image: -webkit-gradient(		linear,			left bottom,		left top,			color-stop(0.33, rgb(153,0,0)),		color-stop(0.84, rgb(237,109,109))		);				border-left:1px solid rgb(204,204,204);		border-top:1px solid rgb(204,204,204);	}	#scorecenter	{		width:39.2%;		height:75px;		text-align:center;		border-left:1px solid rgb(204,204,204);		border-right:1px solid rgb(51,51,51);		-webkit-touch-callout: none;		-webkit-user-select: none;		-khtml-user-select: none;		-moz-user-select: none;	-ms-user-select: none;		user-select: none;		border-top:1px solid rgb(204,204,204);	}	#bluescore, #redscore	{		height:75px;		width:30%;	}	#timer	{		height:75px;		width:40%;	}	#incrementb, #decrementb, #incrementr, #decrementr, #pause, #reset	{		height:20px;	}	#incrementb, #incrementr	{		cursor:n-resize;	}	#decrementb, #decrementr	{		cursor:s-resize;	}	#scorepieceb, #scorepiecer, #timepiece	{		height:25px;		padding-top:10px;		font-weight:bold;		text-outline:1px solid #fff;	}</style>');
+			$('head').append('<style type="text/css">\
+\
+	#scoreboard\
+	{\
+		position:absolute;\
+		z-index:1;\
+		border: 2px solid #000;\
+		font-family:Arial, Helvetica, sans-serif;\
+		font-size:18px;\
+		background-color:#fff;\
+		height:95px;\
+		width:500px;\
+		\
+		box-shadow:0px 0px 10px rgba(0,0,0,.5);\
+		-moz-box-shadow:0px 0px 10px rgba(0,0,0,.5);\
+		-webkit-box-shadow:0px 0px 10px rgba(0,0,0,.5);\
+		-o-box-shadow:0px 0px 10px rgba(0,0,0,.5);\
+		\
+		background-image: linear-gradient(bottom, rgb(133,133,133) 33%, rgb(240,240,240) 84%);\
+		background-image: -o-linear-gradient(bottom, rgb(133,133,133) 33%, rgb(240,240,240) 84%);\
+		background-image: -moz-linear-gradient(bottom, rgb(133,133,133) 33%, rgb(240,240,240) 84%);\
+		background-image: -webkit-linear-gradient(bottom, rgb(133,133,133) 33%, rgb(240,240,240) 84%);\
+		background-image: -ms-linear-gradient(bottom, rgb(133,133,133) 33%, rgb(240,240,240) 84%);\
+		\
+		background-image: -webkit-gradient(\
+			linear,\
+			left bottom,\
+			left top,\
+			color-stop(0.33, rgb(133,133,133)),\
+			color-stop(0.84, rgb(240,240,240))\
+		);\
+	}\
+	#topBar\
+	{\
+		display:block;\
+		background-color:#666;\
+		color:#fff;\
+		font-size:10px;\
+		text-shadow:0px -1px 1px #000;\
+		height:18px;\
+		cursor:move;\
+		line-height:20px;\
+		padding-left: 10px;\
+		padding-right:10px;\
+		\
+		border-bottom:1px solid rgb(51,51,51);\
+		background-image: linear-gradient(bottom, rgb(36,36,36) 17%, rgb(122,122,122) 80%);\
+		background-image: -o-linear-gradient(bottom, rgb(36,36,36) 17%, rgb(122,122,122) 80%);\
+		background-image: -moz-linear-gradient(bottom, rgb(36,36,36) 17%, rgb(122,122,122) 80%);\
+		background-image: -webkit-linear-gradient(bottom, rgb(36,36,36) 17%, rgb(122,122,122) 80%);\
+		background-image: -ms-linear-gradient(bottom, rgb(36,36,36) 17%, rgb(122,122,122) 80%);\
+		\
+		background-image: -webkit-gradient(\
+			linear,\
+			left bottom,\
+			left top,\
+			color-stop(0.17, rgb(36,36,36)),\
+			color-stop(0.8, rgb(122,122,122))\
+		);\
+	}\
+	#swapper\
+	{\
+		float:right;\
+		cursor:pointer;\
+		height:18px;\
+	}\
+	#scoreleft, #scoreright, #scorecenter, #bluescore, #redscore, #timer\
+	{\
+		float:left;\
+	}\
+	#scoreleft\
+	{\
+		background-color:#36C;\
+		width:30%;\
+		height:75px;\
+		text-align:center;\
+		line-height:75px;\
+		/*padding-top:27px;*/\
+		color:#fff;\
+		font-weight:bold;\
+		\
+		background-image: linear-gradient(bottom, rgb(22,80,196) 33%, rgb(136,156,235) 84%);\
+		background-image: -o-linear-gradient(bottom, rgb(22,80,196) 33%, rgb(136,156,235) 84%);\
+		background-image: -moz-linear-gradient(bottom, rgb(22,80,196) 33%, rgb(136,156,235) 84%);\
+		background-image: -webkit-linear-gradient(bottom, rgb(22,80,196) 33%, rgb(136,156,235) 84%);\
+		background-image: -ms-linear-gradient(bottom, rgb(22,80,196) 33%, rgb(136,156,235) 84%);\
+		\
+		background-image: -webkit-gradient(\
+			linear,\
+			left bottom,\
+			left top,\
+			color-stop(0.33, rgb(22,80,196)),\
+			color-stop(0.84, rgb(136,156,235))\
+		);\
+		\
+		border-right:1px solid rgb(51,51,51);\
+		border-top:1px solid rgb(204,204,204);\
+	}\
+	#scoreright\
+	{\
+		background-color:#F30;\
+		width:30%;\
+		height:75px;\
+		text-align:center;\
+		line-height:75px;\
+		/*padding-top:27px;*/\
+		color:#fff;\
+		font-weight:bold;\
+		\
+		background-image: linear-gradient(bottom, rgb(153,0,0) 33%, rgb(237,109,109) 84%);\
+		background-image: -o-linear-gradient(bottom, rgb(153,0,0) 33%, rgb(237,109,109) 84%);\
+		background-image: -moz-linear-gradient(bottom, rgb(153,0,0) 33%, rgb(237,109,109) 84%);\
+		background-image: -webkit-linear-gradient(bottom, rgb(153,0,0) 33%, rgb(237,109,109) 84%);\
+		background-image: -ms-linear-gradient(bottom, rgb(153,0,0) 33%, rgb(237,109,109) 84%);\
+		\
+		background-image: -webkit-gradient(\
+			linear,\
+			left bottom,\
+			left top,\
+			color-stop(0.33, rgb(153,0,0)),\
+			color-stop(0.84, rgb(237,109,109))\
+		);\
+		\
+		border-left:1px solid rgb(204,204,204);\
+		border-top:1px solid rgb(204,204,204);\
+	}\
+	#scorecenter\
+	{\
+		width:39.1%;\
+		height:75px;\
+		text-align:center;\
+		border-left:1px solid rgb(204,204,204);\
+		border-right:1px solid rgb(51,51,51);\
+		-webkit-touch-callout: none;\
+		-webkit-user-select: none;\
+		-khtml-user-select: none;\
+		-moz-user-select: none;\
+		-ms-user-select: none;\
+		user-select: none;\
+		border-top:1px solid rgb(204,204,204);\
+	}\
+	#bluescore, #redscore\
+	{\
+		height:75px;\
+		width:30%;\
+	}\
+	#timer\
+	{\
+		height:75px;\
+		width:40%;\
+	}\
+	#incrementb, #decrementb, #incrementr, #decrementr, #pause, #reset\
+	{\
+		height:20px;\
+	}\
+	#incrementb, #incrementr\
+	{\
+		cursor:n-resize;\
+	}\
+	#decrementb, #decrementr\
+	{\
+		cursor:s-resize;\
+	}\
+	#scorepieceb, #scorepiecer, #timepiece\
+	{\
+		height:25px;\
+		padding-top:10px;\
+		font-weight:bold;\
+		text-outline:1px solid #fff;\
+	}\
+</style>');
 			$('body').append('<div id="scoreboard">        	<div id="topBar">Haxlet Scoreboard 1.0 - Copyright 2013 Jason Kraft <span id="announcer"></span><span id="swapper">SWAP TEAM</span></div>        	<div id="scoreleft" contenteditable="true">Blue Team</div>                <div id="scorecenter">        	        	<div id="bluescore">            	<div id="incrementb">&#8743;</div>                <div id="scorepieceb">0</div>                <div id="decrementb">&#8744;</div>            </div>                        <div id="timer">            	<div id="pause"><a href="#">Play/Pause</a></div>            	<div id="timepiece">5:00</div>                <div id="reset"><a href="#">Reset</a></div>            </div>                        <div id="redscore">            	<div id="incrementr">&#8743;</div>                <div id="scorepiecer">0</div>                <div id="decrementr">&#8744;</div>            </div>                    </div>                <div id="scoreright" contenteditable="true">Red Team</div>            </div>');
 
-var blueScore = 0;
+
+
+/*var blueScore = 0;
 var redScore = 0;
 var paused = false;
 
@@ -173,7 +346,7 @@ $('#swapper').click(function() {
 	seconds = 0;
 	$("#timepiece").fadeOut("fast").text("5:00").fadeIn("fast");
 	$('#announcer').hide().text("| Teams switched").fadeIn("fast").delay(200).fadeOut("fast");
-});
+});*/
 
 	})();
 	}
