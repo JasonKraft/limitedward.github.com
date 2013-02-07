@@ -254,7 +254,7 @@ if (e.which == 13)
 $("#reset").click(function(e){
 	minutes = 0;
 	seconds = 0;
-	$("#timepiece").text("5:00");
+	$("#timepiece").text("0:00");
 	interval1 = clearInterval(interval1);
 	paused = true;
 	
