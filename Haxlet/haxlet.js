@@ -231,9 +231,11 @@ var paused = false;
 $('#scoreboard').draggable();
 $('#scoreleft').dblclick(function(e){
 	$(this).focus();
+	selectText(this);
 });
 $('#scoreright').dblclick(function(e){
 	$(this).focus();
+	selectText(this);
 });
 
 $(document).ready(function(e) {
@@ -314,7 +316,7 @@ function timer(){
 		seconds = 0;
 		minutes++;
 	}
-	if (currenttime >= maxtime)
+	if (currenttime >= maxtimeint)
 	{
 		seconds = maxsec;
 		minutes = maxmin;
@@ -367,9 +369,29 @@ $('#swapper').click(function() {
 });
 
 $('#timepiece').dblclick(function() {
-	var maxtime = prompt("Enter the desired max time in seconds (ex: 1:00 minutes = 60):");
+	var maxtime = prompt("Enter the desired max time in seconds (ex: 1:00 = 60):");
 	maxtimeint = parseInt(maxtime);
+	maxmin = maxtimeint / 60;
+	maxsec = maxtimeint - (maxmin * 60);
 });
+
+function selectText(element) {
+    var doc = document
+        , text = doc.getElementById(element)
+        , range, selection
+    ;    
+    if (doc.body.createTextRange) { //ms
+        range = doc.body.createTextRange();
+        range.moveToElementText(text);
+        range.select();
+    } else if (window.getSelection) { //all others
+        selection = window.getSelection();        
+        range = doc.createRange();
+        range.selectNodeContents(text);
+        selection.removeAllRanges();
+        selection.addRange(range);
+    }
+}
 
 });
 
