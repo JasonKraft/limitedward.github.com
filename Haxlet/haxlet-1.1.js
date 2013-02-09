@@ -114,11 +114,8 @@
 	#swapper, #setTime, .spacer\
 	{\
 		float:left;\
-		height:18px;\
-	}\
-	#swapper, #setTime\
-	{\
 		cursor:pointer;\
+		height:18px;\
 	}\
 	#scoreleft, #scoreright, #scorecenter, #bluescore, #redscore, #timer\
 	{\
@@ -247,9 +244,9 @@
 </style>');
 			
 			$('body').append('<div id="scoreboard"></div>');
-			$('#scoreboard').html('<div class="topBar">Haxlet Scoreboard 1.2 - Copyright 2013 Jason Kraft <span id="announcer"></span><span id="options">Options</span></div>\
+			$('#scoreboard').html('<div class="topBar">Haxlet Scoreboard 1.1 - Copyright 2013 Jason Kraft <span id="announcer"></span><span id="options">Options</span></div>\
         <div class="topBar" style="display:none">\
-        	<span id="swapper">SWAP TEAMS</span><span class = "spacer">&nbsp;&nbsp;&nbsp;</span><span id="setTime">SET TIME</span>\
+        	<span id="swapper">SWAP TEAMS</span><span class = "spacer">&nbsp;|&nbsp;</span><span id="setTime">SET TIME</span>\
         </div>\
     \
     	<div id="scoreleft" contenteditable="true">Blue Team</div>\
@@ -264,7 +261,7 @@
             \
             <div id="timer">\
             	<div id="pause">Play/Pause</div>\
-            	<div id="timepiece">0:00</div>\
+            	<div id="timepiece">5:00</div>\
                 <div id="reset">Reset</div>\
             </div>\
             \
@@ -313,121 +310,32 @@ function textWidth(content_id){
 	return width;
 }
 
-function checkName(id) {
-	if (id.text() == "WillyNillys")
-	{
-		console.log('Matches WillyNillys');
-		id.css({
-			'background' : 'rgba(255,0,128,.5)'
-		});
-	}
-	else if (id.text() == "Recession")
-	{
-		console.log('Matches Recession');
-		id.css({
-			'background' : 'rgba(191,0,0,.5)'
-		});
-	}
-	else if (id.text() == "NYHC")
-	{
-		console.log('Matches NYHC');
-		id.css({
-			'background' : 'rgba(106,90,205,.5)'
-		});
-	}
-	else if (id.text() == "Weathermen")
-	{
-		console.log('Matches Weathermen');
-		id.css({
-			'background' : 'rgba(51,255,0,.5)'
-		});
-	}
-	else if (id.text() == "United Talent")
-	{
-		console.log('Matches United Talent');
-		id.css({
-			'background' : 'rgba(11,56,97,.5)'
-		});
-	}
-	else if (id.text() == "Night Hawks")
-	{
-		console.log('Matches Night Hawks');
-		id.css({
-			'background' : 'rgba(128,0,128,.5)'
-		});
-	}
-	else if (id.text() == "Penguin Pride")
-	{
-		console.log('Matches Penguin Pride');
-		id.css({
-			'background' : 'rgba(0,0,191,.5)'
-		});
-	}
-	else if (id.text() == "Squirtle Squad")
-	{
-		console.log('Matches Squirtle Squad');
-		id.css({
-			'background' : 'rgba(53,126,199,.5)'
-		});
-	}
-	else if (id.text() == "Golden Eagles")
-	{
-		console.log('Matches Golden Eagles');
-		id.css({
-			'background' : 'rgba(255,191,0,.5)'
-		});
-	}
-	else if (id.text() == "Cuba Cyclones")
-	{
-		console.log('Matches Cuba Cyclones');
-		id.css({
-			'background' : 'rgba(0,128,128,.5)'
-		});
-	}
-	else
-	{
-		id.removeAttr("style");
-	}
-}
-
-function check_charcount(content_id, e) {   
+function check_charcount(content_id, /*max,*/ e)
+    {   
 		
-	if (textWidth(content_id) > $('#' + content_id).width()-10)
-	{
-		//console.log('Max width reached!');
-		e.preventDefault();
-	}
-}
-	
-
-$("#scoreright").keyup(function(e) {
-    checkName($('#scoreright'));
-});
-
-$("#scoreleft").keyup(function(e) {
-    checkName($('#scoreleft'));
-});
+		if (textWidth(content_id) > $('#' + content_id).width()-10)
+		{
+			//console.log('Max width reached!');
+			e.preventDefault();
+		}
+    }
 
 $("#scoreright").keypress(function(e){ 
-	
-	//checkName($('#scoreright'));
-	
-	check_charcount('scoreright', e);
-	
-	if (e.which == 13)
-		this.blur();
-	return e.which != 13;
-});
- 
-$("#scoreleft").keypress(function(e){ 
-	
-	check_charcount('scoreleft', e);
-	
-	if (e.which == 13)
-		this.blur();
-	return e.which != 13;
-});
 
+check_charcount('scoreright', e);
+
+if (e.which == 13)
+	this.blur();
+	return e.which != 13;
+ });
+$("#scoreleft").keypress(function(e){ 
+
+check_charcount('scoreleft', e);
+
+if (e.which == 13)
+	this.blur();
+	return e.which != 13;
+});
 $("#reset").click(function(e){
 	minutes = 0;
 	seconds = 0;
@@ -436,15 +344,6 @@ $("#reset").click(function(e){
 	interval1 = clearInterval(interval1);
 	paused = true;
 	
-	var blue = $('#scoreright');
-	var red = $('#scoreleft');
-	$('#scoreright').hide();
-	$('#scoreleft').hide();
-	red.insertAfter($('.topBar:last')).show();
-	blue.insertAfter($('#scorecenter')).show();
-	swapped = false;
-	$("#scoreleft").removeAttr("style");
-	$("#scoreright").removeAttr("style");
 	$("#scoreleft").text("Blue Team");
 	$("#scoreright").text("Red Team");
 	blueScore = 0;
@@ -539,14 +438,12 @@ $('#options').click(function() {
 	{
 		optionsopen = false;
 		$('.topBar:last').slideUp('fast');
-		$('#scoreboard').animate({height : ($('#scoreboard').height() - 18)},'fast');
 		$('#options').text('Options');
 	}
 	else
 	{
 		optionsopen = true;
 		$('.topBar:last').slideDown('fast');
-		$('#scoreboard').animate({height : ($('#scoreboard').height() + 18)},'fast');
 		$('#options').text('Options (close)');
 	}
 });
@@ -560,36 +457,19 @@ $('#setTime').click(function() {
 	$("#timepiece").text(minutes + ":" + secPad);
 });
 
-var swapped = false;
+var bname = "";
+var rname = "";
 
 $('#swapper').click(function() {
-	if (swapped)
-	{
-		var blue = $('#scoreright');
-		var red = $('#scoreleft');
-		$('#scoreright').fadeOut("fast");
-		$('#scoreleft').fadeOut("fast");
-		red.insertAfter($('.topBar:last')).fadeIn('fast');
-		blue.insertAfter($('#scorecenter')).fadeIn('fast');
-		swapped = false;
-	}
-	else
-	{
-		var blue = $('#scoreleft');
-		var red = $('#scoreright');
-		$('#scoreright').fadeOut("fast");
-		$('#scoreleft').fadeOut("fast");
-		red.insertAfter($('.topBar:last')).fadeIn('fast');
-		blue.insertAfter($('#scorecenter')).fadeIn('fast');
-		swapped = true;
-	}
-	
+	bname = $('#scoreleft').text();
+	rname = $('#scoreright').text();
 	var tempscore = blueScore;
 	blueScore = redScore;
 	redScore = tempscore;
+	$('#scoreright').fadeOut("fast").text(bname).fadeIn("fast");
+	$('#scoreleft').fadeOut("fast").text(rname).fadeIn("fast");
 	$("#scorepieceb").fadeOut("fast").text("" + blueScore).fadeIn("fast");
 	$("#scorepiecer").fadeOut("fast").text("" + redScore).fadeIn("fast");
-	
 	interval1 = clearInterval(interval1);
 	paused = true;
 	minutes = 0;
@@ -618,6 +498,7 @@ function select_all(el) {
             textRange.select();
         }
     }
+
 
 
 });
