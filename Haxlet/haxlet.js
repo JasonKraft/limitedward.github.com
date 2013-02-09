@@ -231,11 +231,11 @@ var paused = false;
 $('#scoreboard').draggable();
 $('#scoreleft').dblclick(function(e){
 	$(this).focus();
-	selectText(this);
+	selectText($('#scoreleft'));
 });
 $('#scoreright').dblclick(function(e){
 	$(this).focus();
-	selectText(this);
+	selectText($('#scoreright'));
 });
 
 $(document).ready(function(e) {
@@ -371,8 +371,8 @@ $('#swapper').click(function() {
 $('#timepiece').dblclick(function() {
 	var maxtime = prompt("Enter the desired max time in seconds (ex: 1:00 = 60):");
 	maxtimeint = parseInt(maxtime);
-	maxmin = maxtimeint / 60;
-	maxsec = maxtimeint - (maxmin * 60);
+	maxmin = parseInt(maxtimeint / 60);
+	maxsec = parseInt(maxtimeint - (maxmin * 60));
 });
 
 function selectText(element) {
