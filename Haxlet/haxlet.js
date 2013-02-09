@@ -231,11 +231,11 @@ var paused = false;
 $('#scoreboard').draggable();
 $('#scoreleft').dblclick(function(e){
 	$(this).focus();
-	selectText($('#scoreleft'));
+	$(this).select();
 });
 $('#scoreright').dblclick(function(e){
 	$(this).focus();
-	selectText($('#scoreright'));
+	$(this).select();
 });
 
 $(document).ready(function(e) {
@@ -375,23 +375,7 @@ $('#timepiece').dblclick(function() {
 	maxsec = parseInt(maxtimeint - (maxmin * 60));
 });
 
-function selectText(element) {
-    var doc = document
-        , text = doc.getElementById(element)
-        , range, selection
-    ;    
-    if (doc.body.createTextRange) { //ms
-        range = doc.body.createTextRange();
-        range.moveToElementText(text);
-        range.select();
-    } else if (window.getSelection) { //all others
-        selection = window.getSelection();        
-        range = doc.createRange();
-        range.selectNodeContents(text);
-        selection.removeAllRanges();
-        selection.addRange(range);
-    }
-}
+
 
 });
 
