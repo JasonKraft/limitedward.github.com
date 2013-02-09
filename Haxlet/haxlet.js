@@ -230,12 +230,12 @@ var paused = false;
 
 $('#scoreboard').draggable();
 $('#scoreleft').dblclick(function(e){
+	select_all(this);
 	$(this).focus();
-	$(this).select();
 });
 $('#scoreright').dblclick(function(e){
+	select_all(this);
 	$(this).focus();
-	$(this).select();
 });
 
 $(document).ready(function(e) {
@@ -243,12 +243,39 @@ $(document).ready(function(e) {
 	interval1 = clearInterval(interval1);
 });
 
+function textWidth(content_id){
+	var html_org = "";
+	html_org += $('#' + content_id).html();
+	var html_calc = '<span id="tester">' + html_org + '</span>';
+	$('#' + content_id).append(html_calc);
+	$('#tester').css('display', 'none');
+	var width = $('#tester').width();
+	$('#tester').remove();
+	return width;
+}
+
+function check_charcount(content_id, /*max,*/ e)
+    {   
+		
+		if (textWidth(content_id) > $('#' + content_id).width()-10)
+		{
+			//console.log('Max width reached!');
+			e.preventDefault();
+		}
+    }
+
 $("#scoreright").keypress(function(e){ 
+
+check_charcount('scoreright', e);
+
 if (e.which == 13)
 	this.blur();
 	return e.which != 13;
  });
 $("#scoreleft").keypress(function(e){ 
+
+check_charcount('scoreleft', e);
+
 if (e.which == 13)
 	this.blur();
 	return e.which != 13;
@@ -374,6 +401,20 @@ $('#timepiece').dblclick(function() {
 	maxmin = parseInt(maxtimeint / 60);
 	maxsec = parseInt(maxtimeint - (maxmin * 60));
 });
+
+function select_all(el) {
+        if (typeof window.getSelection != "undefined" && typeof document.createRange != "undefined") {
+            var range = document.createRange();
+            range.selectNodeContents(el);
+            var sel = window.getSelection();
+            sel.removeAllRanges();
+            sel.addRange(range);
+        } else if (typeof document.selection != "undefined" && typeof document.body.createTextRange != "undefined") {
+            var textRange = document.body.createTextRange();
+            textRange.moveToElementText(el);
+            textRange.select();
+        }
+    }
 
 
 
