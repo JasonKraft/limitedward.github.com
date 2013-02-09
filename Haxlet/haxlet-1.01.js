@@ -77,7 +77,7 @@
 			color-stop(0.84, rgb(240,240,240))\
 		);\
 	}\
-	.topBar\
+	#topBar\
 	{\
 		display:block;\
 		background-color:#666;\
@@ -105,15 +105,9 @@
 			color-stop(0.8, rgb(122,122,122))\
 		);\
 	}\
-	#options\
+	#swapper\
 	{\
 		float:right;\
-		cursor:pointer;\
-		height:18px;\
-	}\
-	#swapper, #setTime, .spacer\
-	{\
-		float:left;\
 		cursor:pointer;\
 		height:18px;\
 	}\
@@ -179,10 +173,10 @@
 	}\
 	#scorecenter\
 	{\
-		width:39.2%;\
+		width:39.1%;\
 		height:75px;\
 		text-align:center;\
-		background-color:#fff;\
+		color:#000;\
 		border-left:1px solid rgb(204,204,204);\
 		border-right:1px solid rgb(51,51,51);\
 		-webkit-touch-callout: none;\
@@ -192,20 +186,6 @@
 		-ms-user-select: none;\
 		user-select: none;\
 		border-top:1px solid rgb(204,204,204);\
-		\
-		background-image: linear-gradient(bottom, rgb(133,133,133) 33%, rgb(240,240,240) 84%);\
-		background-image: -o-linear-gradient(bottom, rgb(133,133,133) 33%, rgb(240,240,240) 84%);\
-		background-image: -moz-linear-gradient(bottom, rgb(133,133,133) 33%, rgb(240,240,240) 84%);\
-		background-image: -webkit-linear-gradient(bottom, rgb(133,133,133) 33%, rgb(240,240,240) 84%);\
-		background-image: -ms-linear-gradient(bottom, rgb(133,133,133) 33%, rgb(240,240,240) 84%);\
-		\
-		background-image: -webkit-gradient(\
-			linear,\
-			left bottom,\
-			left top,\
-			color-stop(0.33, rgb(133,133,133)),\
-			color-stop(0.84, rgb(240,240,240))\
-		);\
 	}\
 	#bluescore, #redscore\
 	{\
@@ -243,38 +223,7 @@
 </style>');
 			
 			$('body').append('<div id="scoreboard"></div>');
-			$('#scoreboard').html('<div class="topBar">Haxlet Scoreboard 1.1 - Copyright 2013 Jason Kraft <span id="announcer"></span><span id="options">Options</span></div>\
-        <div class="topBar" style="display:none">\
-        	<span id="swapper">SWAP TEAMS</span><span class = "spacer">&nbsp;|&nbsp;</span><span id="setTime">SET TIME</span>\
-        </div>\
-    \
-    	<div id="scoreleft" contenteditable="true">Blue Team</div>\
-        \
-        <div id="scorecenter">\
-        	\
-        	<div id="bluescore">\
-            	<div id="incrementb">&#8743;</div>\
-                <div id="scorepieceb">0</div>\
-                <div id="decrementb">&#8744;</div>\
-            </div>\
-            \
-            <div id="timer">\
-            	<div id="pause">Play/Pause</div>\
-            	<div id="timepiece">5:00</div>\
-                <div id="reset">Reset</div>\
-            </div>\
-            \
-            <div id="redscore">\
-            	<div id="incrementr">&#8743;</div>\
-                <div id="scorepiecer">0</div>\
-                <div id="decrementr">&#8744;</div>\
-            </div>\
-            \
-        </div>\
-        \
-        <div id="scoreright" contenteditable="true">Red Team</div>\
-        \
-    </div>').ready(function(e) {
+			$('#scoreboard').html('        	<div id="topBar">Haxlet Scoreboard 1.01 - Copyright 2013 Jason Kraft <span id="announcer"></span><span id="swapper">SWAP TEAM</span></div>        	<div id="scoreleft" contenteditable="true">Blue Team</div>                <div id="scorecenter">        	        	<div id="bluescore">            	<div id="incrementb">&#8743;</div>                <div id="scorepieceb">0</div>                <div id="decrementb">&#8744;</div>            </div>                        <div id="timer">            	<div id="pause">Play/Pause</div>            	<div id="timepiece">0:00</div>                <div id="reset">Reset</div>            </div>                        <div id="redscore">            	<div id="incrementr">&#8743;</div>                <div id="scorepiecer">0</div>                <div id="decrementr">&#8744;</div>            </div>                    </div>                <div id="scoreright" contenteditable="true">Red Team</div>            ').ready(function(e) {
                 
             
 			//$('#scoreboard').draggable();
@@ -428,32 +377,6 @@ $('#pause').click(function() {
 		$("#timepiece").fadeOut("fast").fadeIn("fast");
 		$('#announcer').hide().text("| Game unpaused").fadeIn("fast").delay(200).fadeOut("fast");
 	}
-});
-
-var optionsopen = false;
-
-$('#options').click(function() {
-	if (optionsopen)
-	{
-		optionsopen = false;
-		$('.topBar:last').slideUp('fast');
-		$('#options').text('Options');
-	}
-	else
-	{
-		optionsopen = true;
-		$('.topBar:last').slideDown('fast');
-		$('#options').text('Options (close)');
-	}
-});
-
-$('#setTime').click(function() {
-	var time = prompt("Enter the desired time in seconds (ex: 1:00 = 60):");
-	currenttime = parseInt(time);
-	minutes = parseInt(time / 60);
-	seconds = parseInt(time - (minutes * 60));
-	secPad = pad("" + seconds, 2);
-	$("#timepiece").text(minutes + ":" + secPad);
 });
 
 var bname = "";
