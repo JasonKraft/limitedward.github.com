@@ -348,6 +348,7 @@ function timer(){
 		seconds = maxsec;
 		minutes = maxmin;
 		interval1 = clearInterval(interval1);
+		paused = true;
 		$("#timepiece").fadeOut("fast").fadeIn("fast").fadeOut("fast").fadeIn("fast");
 	}
 	secPad = pad("" + seconds, 2);
