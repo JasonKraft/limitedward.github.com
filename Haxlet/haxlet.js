@@ -252,7 +252,7 @@
         	<span id="swapper">SWAP TEAMS</span><span class = "spacer">&nbsp;&nbsp;&nbsp;</span><span id="setTime">SET TIME</span>\
         </div>\
     \
-    	<div id="scoreleft" contenteditable="true">Blue Team</div>\
+    	<div id="scoreleft" contenteditable="true" spellcheck="false">Blue Team</div>\
         \
         <div id="scorecenter">\
         	\
@@ -276,7 +276,7 @@
             \
         </div>\
         \
-        <div id="scoreright" contenteditable="true">Red Team</div>\
+        <div id="scoreright" contenteditable="true" spellcheck="false">Red Team</div>\
         \
     </div>').ready(function(e) {
                 
