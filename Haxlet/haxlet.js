@@ -254,6 +254,7 @@ if (e.which == 13)
 $("#reset").click(function(e){
 	minutes = 0;
 	seconds = 0;
+	currenttime = 0;
 	$("#timepiece").text("0:00");
 	interval1 = clearInterval(interval1);
 	paused = true;
@@ -299,17 +300,24 @@ function pad (str, max) {
 	return str.length < max ? pad("0" + str, max) : str;
 }
 
+var maxmin = 5;
+var maxsec = 0;
+var maxtimeint = maxmin * 60 + maxsec;
+var currenttime = 0;
+
 function timer(){
 	seconds++;
+	currenttime++;
+	
 	if (seconds > 59)
 	{
 		seconds = 0;
 		minutes++;
 	}
-	if (minutes > 4)
+	if (currenttime >= maxtime)
 	{
-		seconds = 0;
-		minutes = 5;
+		seconds = maxsec;
+		minutes = maxmin;
 		interval1 = clearInterval(interval1);
 		$("#timepiece").fadeOut("fast").fadeIn("fast").fadeOut("fast").fadeIn("fast");
 	}
@@ -356,7 +364,14 @@ $('#swapper').click(function() {
 	seconds = 0;
 	$("#timepiece").fadeOut("fast").text("0:00").fadeIn("fast");
 	$('#announcer').hide().text("| Teams switched").fadeIn("fast").delay(200).fadeOut("fast");
-});});
+});
+
+$('#timepiece').dblclick(function() {
+	var maxtime = prompt("Enter the desired max time in seconds (ex: 1:00 minutes = 60):");
+	maxtimeint = parseInt(maxtime);
+});
+
+});
 
 	})();
 	}
