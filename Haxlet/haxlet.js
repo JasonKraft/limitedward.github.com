@@ -179,9 +179,10 @@
 	}\
 	#scorecenter\
 	{\
-		width:39.2%;\
+		width:39.1%;\
 		height:75px;\
 		text-align:center;\
+		color:#000;\
 		background-color:#fff;\
 		border-left:1px solid rgb(204,204,204);\
 		border-right:1px solid rgb(51,51,51);\
