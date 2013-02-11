@@ -483,8 +483,13 @@ function addToRed() {
 $("#incrementb").click(addToBlue());
 $("#incrementr").click(addToRed());
 
-$(document).bind('keydown', 'ctrl+shift+w', addToBlue());
-$(document).bind('keydown', 'ctrl+shift+e', addToRed());
+$(document).ready(function(e) {
+    $(document).bind('keydown', 'ctrl+shift+w', addToBlue());
+	$(document).bind('keydown', 'ctrl+shift+e', addToRed());
+	$(document).bind('keydown', 'ctrl+shift+s', decToBlue());
+	$(document).bind('keydown', 'ctrl+shift+d', decToRed());
+	$(document).bind('keydown', 'ctrl+shift+p', pauseTimer());
+});
 
 function decToBlue() {
 	blueScore--;
@@ -498,9 +503,6 @@ function decToRed() {
 
 $("#decrementb").click(decToBlue());
 $("#decrementr").click(decToRed());
-
-$(document).bind('keydown', 'ctrl+shift+s', decToBlue());
-$(document).bind('keydown', 'ctrl+shift+d', decToRed());
 
 var minutes = 0;
 var seconds = 0;
@@ -557,8 +559,6 @@ function pauseTimer() {
 }
 
 $('#pause').click(pauseTimer());
-
-$(document).bind('keydown', 'ctrl+shift+p', pauseTimer());
 
 var optionsopen = false;
 
