@@ -1,11 +1,6 @@
 // Haxlet Scoreboard bookmarklet
 // Copy 2013 Jason Kraft
 
-var blueScore = 0;
-var redScore = 0;
-var paused = false;
-var interval1;
-
 (function(){
 
 	// the minimum version of jQuery we want
@@ -296,6 +291,10 @@ var interval1;
             
 			//$('#scoreboard').draggable();
 
+var blueScore = 0;
+var redScore = 0;
+var paused = false;
+
 $('#scoreboard').draggable();
 $('#scoreleft').dblclick(function(e){
 	select_all(this);
@@ -480,6 +479,48 @@ $("#incrementr").click(function(e) {
 	paused = true;
 });
 
+    $(document).bind('keydown', 'ctrl+shift+w', function(e) {
+	blueScore++;
+	$("#scorepieceb").fadeOut("fast").text("" + blueScore).fadeIn("fast");
+	bname = $('#scoreleft').text();
+	$('#announcer').hide().text("| "+ bname +" scores!").fadeIn("fast").delay(1000).fadeOut("fast");
+	interval1 = clearInterval(interval1);
+	paused = true;
+});
+	$(document).bind('keydown', 'ctrl+shift+e', function(e) {
+	redScore++;
+	$("#scorepiecer").fadeOut("fast").text("" + redScore).fadeIn("fast");
+	rname = $('#scoreright').text();
+	$('#announcer').hide().text("| "+ rname +" scores!").fadeIn("fast").delay(1000).fadeOut("fast");
+	interval1 = clearInterval(interval1);
+	paused = true;
+});
+	$(document).bind('keydown', 'ctrl+shift+s', function(e) {
+	blueScore--;
+	$("#scorepieceb").fadeOut("fast").text("" + blueScore).fadeIn("fast");
+});
+	$(document).bind('keydown', 'ctrl+shift+d', function(e) {
+	redScore--;
+	$("#scorepiecer").fadeOut("fast").text("" + redScore).fadeIn("fast");
+});
+	$(document).bind('keydown', 'ctrl+shift+p', function(e) {
+	if (paused == false)
+	{
+		interval1 = clearInterval(interval1);
+		paused = true;
+		$("#timepiece").fadeOut("fast").fadeIn("fast");
+		$('#announcer').hide().text("| Game paused").fadeIn("fast").delay(200).fadeOut("fast");
+	}
+	else
+	{
+		interval1 = setInterval(function(){ timer() }, 1000);
+		paused = false;
+		$("#timepiece").fadeOut("fast").fadeIn("fast");
+		$('#announcer').hide().text("| Game unpaused").fadeIn("fast").delay(200).fadeOut("fast");
+	}
+});
+
+
 $("#decrementb").click(function(e) {
 	blueScore--;
 	$("#scorepieceb").fadeOut("fast").text("" + blueScore).fadeIn("fast");
@@ -524,7 +565,7 @@ function timer(){
 	$("#timepiece").text(minutes + ":" + secPad);
 }
 
-interval1 = setInterval(function(){ timer() }, 1000);
+var interval1 = setInterval(function(){ timer() }, 1000);
 
 $('#pause').click(function(e) {
 	if (paused == false)
@@ -637,51 +678,6 @@ function select_all(el) {
 	}
 
 })();
-
-$(document).bind('keydown', 'ctrl+shift+w', function(e) {
-	blueScore++;
-	$("#scorepieceb").fadeOut("fast").text("" + blueScore).fadeIn("fast");
-	bname = $('#scoreleft').text();
-	$('#announcer').hide().text("| "+ bname +" scores!").fadeIn("fast").delay(1000).fadeOut("fast");
-	interval1 = clearInterval(interval1);
-	paused = true;
-});
-
-$(document).bind('keydown', 'ctrl+shift+e', function(e) {
-	redScore++;
-	$("#scorepiecer").fadeOut("fast").text("" + redScore).fadeIn("fast");
-	rname = $('#scoreright').text();
-	$('#announcer').hide().text("| "+ rname +" scores!").fadeIn("fast").delay(1000).fadeOut("fast");
-	interval1 = clearInterval(interval1);
-	paused = true;
-});
-
-$(document).bind('keydown', 'ctrl+shift+s', function(e) {
-	blueScore--;
-	$("#scorepieceb").fadeOut("fast").text("" + blueScore).fadeIn("fast");
-});
-
-$(document).bind('keydown', 'ctrl+shift+d', function(e) {
-	redScore--;
-	$("#scorepiecer").fadeOut("fast").text("" + redScore).fadeIn("fast");
-});
-
-$(document).bind('keydown', 'ctrl+shift+p', function(e) {
-	if (paused == false)
-	{
-		interval1 = clearInterval(interval1);
-		paused = true;
-		$("#timepiece").fadeOut("fast").fadeIn("fast");
-		$('#announcer').hide().text("| Game paused").fadeIn("fast").delay(200).fadeOut("fast");
-	}
-	else
-	{
-		interval1 = setInterval(function(){ timer() }, 1000);
-		paused = false;
-		$("#timepiece").fadeOut("fast").fadeIn("fast");
-		$('#announcer').hide().text("| Game unpaused").fadeIn("fast").delay(200).fadeOut("fast");
-	}
-});
 
 /*function addToBlue() {
 	blueScore++;
