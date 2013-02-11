@@ -479,7 +479,6 @@ $("#incrementr").click(function(e) {
 	paused = true;
 });
 
-$(document).ready(function(e) {
     $(document).bind('keydown', 'ctrl+shift+w', function(e) {
 	blueScore++;
 	$("#scorepieceb").fadeOut("fast").text("" + blueScore).fadeIn("fast");
@@ -520,7 +519,7 @@ $(document).ready(function(e) {
 		$('#announcer').hide().text("| Game unpaused").fadeIn("fast").delay(200).fadeOut("fast");
 	}
 });
-});
+
 
 $("#decrementb").click(function(e) {
 	blueScore--;
