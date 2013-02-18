@@ -13,8 +13,6 @@
 		var script = document.createElement("script");
 		var done1 = false;
 		var script1 = document.createElement("script");
-		var done2 = false;
-		var script2 = document.createElement("script");
 		script.src = "http://ajax.googleapis.com/ajax/libs/jquery/" + v + "/jquery.min.js";
 		script.onload = script.onreadystatechange = function(){
 			if (!done && (!this.readyState || this.readyState == "loaded" || this.readyState == "complete")) {
@@ -24,13 +22,7 @@
 				script1.onload = script1.onreadystatechange = function(){
 				if (!done1 && (!this.readyState || this.readyState == "loaded" || this.readyState == "complete")) {
 					done1 = true;
-					script2.src = "jquery.hotkeys.js";
-					script2.onload = script1.onreadystatechange = function(){
-						if (!done2 && (!this.readyState || this.readyState == "loaded" || this.readyState == "complete")) {
-							done2 = true;
-							initMyBookmarklet();
-						}
-					}
+					initMyBookmarklet();
 				}
 		};
 		document.getElementsByT
@@ -85,7 +77,7 @@
 			color-stop(0.84, rgb(240,240,240))\
 		);\
 	}\
-	.topBar\
+	#topBar\
 	{\
 		display:block;\
 		background-color:#666;\
@@ -113,20 +105,11 @@
 			color-stop(0.8, rgb(122,122,122))\
 		);\
 	}\
-	#options\
+	#swapper\
 	{\
 		float:right;\
 		cursor:pointer;\
 		height:18px;\
-	}\
-	#swapper, #setTime, .spacer\
-	{\
-		float:left;\
-		height:18px;\
-	}\
-	#swapper, #setTime\
-	{\
-		cursor:pointer;\
 	}\
 	#scoreleft, #scoreright, #scorecenter, #bluescore, #redscore, #timer\
 	{\
@@ -194,7 +177,6 @@
 		height:75px;\
 		text-align:center;\
 		color:#000;\
-		background-color:#fff;\
 		border-left:1px solid rgb(204,204,204);\
 		border-right:1px solid rgb(51,51,51);\
 		-webkit-touch-callout: none;\
@@ -204,20 +186,6 @@
 		-ms-user-select: none;\
 		user-select: none;\
 		border-top:1px solid rgb(204,204,204);\
-		\
-		background-image: linear-gradient(bottom, rgb(133,133,133) 33%, rgb(240,240,240) 84%);\
-		background-image: -o-linear-gradient(bottom, rgb(133,133,133) 33%, rgb(240,240,240) 84%);\
-		background-image: -moz-linear-gradient(bottom, rgb(133,133,133) 33%, rgb(240,240,240) 84%);\
-		background-image: -webkit-linear-gradient(bottom, rgb(133,133,133) 33%, rgb(240,240,240) 84%);\
-		background-image: -ms-linear-gradient(bottom, rgb(133,133,133) 33%, rgb(240,240,240) 84%);\
-		\
-		background-image: -webkit-gradient(\
-			linear,\
-			left bottom,\
-			left top,\
-			color-stop(0.33, rgb(133,133,133)),\
-			color-stop(0.84, rgb(240,240,240))\
-		);\
 	}\
 	#bluescore, #redscore\
 	{\
@@ -248,45 +216,10 @@
 		font-weight:bold;\
 		text-outline:1px solid #fff;\
 	}\
-	#reset, #pause\
-	{\
-		cursor:pointer;\
-	}\
 </style>');
 			
 			$('body').append('<div id="scoreboard"></div>');
-			$('#scoreboard').html('<div class="topBar">Haxlet Scoreboard 1.2.1 - Copyright 2013 Jason Kraft <span id="announcer"></span><span id="options">Options</span></div>\
-        <div class="topBar" style="display:none">\
-        	<span id="swapper">SWAP TEAMS</span><span class = "spacer">&nbsp;&nbsp;&nbsp;</span><span id="setTime">SET TIME</span>\
-        </div>\
-    \
-    	<div id="scoreleft" contenteditable="true" spellcheck="false">Blue Team</div>\
-        \
-        <div id="scorecenter">\
-        	\
-        	<div id="bluescore">\
-            	<div id="incrementb">&#8743;</div>\
-                <div id="scorepieceb">0</div>\
-                <div id="decrementb">&#8744;</div>\
-            </div>\
-            \
-            <div id="timer">\
-            	<div id="pause">Play/Pause</div>\
-            	<div id="timepiece">0:00</div>\
-                <div id="reset">Reset</div>\
-            </div>\
-            \
-            <div id="redscore">\
-            	<div id="incrementr">&#8743;</div>\
-                <div id="scorepiecer">0</div>\
-                <div id="decrementr">&#8744;</div>\
-            </div>\
-            \
-        </div>\
-        \
-        <div id="scoreright" contenteditable="true" spellcheck="false">Red Team</div>\
-        \
-    </div>').ready(function(e) {
+			$('#scoreboard').html('        	<div id="topBar">Haxlet Scoreboard 1.0 - Copyright 2013 Jason Kraft <span id="announcer"></span><span id="swapper">SWAP TEAM</span></div>        	<div id="scoreleft" contenteditable="true">Blue Team</div>                <div id="scorecenter">        	        	<div id="bluescore">            	<div id="incrementb">&#8743;</div>                <div id="scorepieceb">0</div>                <div id="decrementb">&#8744;</div>            </div>                        <div id="timer">            	<div id="pause"><a href="#">Play/Pause</a></div>            	<div id="timepiece">0:00</div>                <div id="reset"><a href="#">Reset</a></div>            </div>                        <div id="redscore">            	<div id="incrementr">&#8743;</div>                <div id="scorepiecer">0</div>                <div id="decrementr">&#8744;</div>            </div>                    </div>                <div id="scoreright" contenteditable="true">Red Team</div>            ').ready(function(e) {
                 
             
 			//$('#scoreboard').draggable();
@@ -297,11 +230,9 @@ var paused = false;
 
 $('#scoreboard').draggable();
 $('#scoreleft').dblclick(function(e){
-	select_all(this);
 	$(this).focus();
 });
 $('#scoreright').dblclick(function(e){
-	select_all(this);
 	$(this).focus();
 });
 
@@ -310,149 +241,23 @@ $(document).ready(function(e) {
 	interval1 = clearInterval(interval1);
 });
 
-function textWidth(content_id){
-	var html_org = "";
-	html_org += $('#' + content_id).html();
-	var html_calc = '<span id="tester">' + html_org + '</span>';
-	$('#' + content_id).append(html_calc);
-	$('#tester').css('display', 'none');
-	var width = $('#tester').width();
-	$('#tester').remove();
-	return width;
-}
-
-function checkName(id) {
-	if (id.text() == "WillyNillys")
-	{
-		console.log('Matches WillyNillys');
-		id.css({
-			'background' : 'rgba(255,0,128,.5)'
-		});
-	}
-	else if (id.text() == "Recession")
-	{
-		console.log('Matches Recession');
-		id.css({
-			'background' : 'rgba(191,0,0,.5)'
-		});
-	}
-	else if (id.text() == "NYHC")
-	{
-		console.log('Matches NYHC');
-		id.css({
-			'background' : 'rgba(106,90,205,.5)'
-		});
-	}
-	else if (id.text() == "Weathermen")
-	{
-		console.log('Matches Weathermen');
-		id.css({
-			'background' : 'rgba(51,255,0,.5)'
-		});
-	}
-	else if (id.text() == "United Talent")
-	{
-		console.log('Matches United Talent');
-		id.css({
-			'background' : 'rgba(11,56,97,.5)'
-		});
-	}
-	else if (id.text() == "Night Hawks")
-	{
-		console.log('Matches Night Hawks');
-		id.css({
-			'background' : 'rgba(128,0,128,.5)'
-		});
-	}
-	else if (id.text() == "Penguin Pride")
-	{
-		console.log('Matches Penguin Pride');
-		id.css({
-			'background' : 'rgba(0,0,191,.5)'
-		});
-	}
-	else if (id.text() == "Squirtle Squad")
-	{
-		console.log('Matches Squirtle Squad');
-		id.css({
-			'background' : 'rgba(53,126,199,.5)'
-		});
-	}
-	else if (id.text() == "Golden Eagles")
-	{
-		console.log('Matches Golden Eagles');
-		id.css({
-			'background' : 'rgba(255,191,0,.5)'
-		});
-	}
-	else if (id.text() == "Cuba Cyclones")
-	{
-		console.log('Matches Cuba Cyclones');
-		id.css({
-			'background' : 'rgba(0,128,128,.5)'
-		});
-	}
-	else
-	{
-		id.removeAttr("style");
-	}
-}
-
-function check_charcount(content_id, e) {   
-		
-	if (textWidth(content_id) > $('#' + content_id).width()-10)
-	{
-		//console.log('Max width reached!');
-		e.preventDefault();
-	}
-}
-	
-
-$("#scoreright").keyup(function(e) {
-    checkName($('#scoreright'));
-});
-
-$("#scoreleft").keyup(function(e) {
-    checkName($('#scoreleft'));
-});
-
 $("#scoreright").keypress(function(e){ 
-	
-	//checkName($('#scoreright'));
-	
-	check_charcount('scoreright', e);
-	
-	if (e.which == 13)
-		this.blur();
+if (e.which == 13)
+	this.blur();
 	return e.which != 13;
-});
- 
+ });
 $("#scoreleft").keypress(function(e){ 
-	
-	check_charcount('scoreleft', e);
-	
-	if (e.which == 13)
-		this.blur();
+if (e.which == 13)
+	this.blur();
 	return e.which != 13;
 });
-
 $("#reset").click(function(e){
 	minutes = 0;
 	seconds = 0;
-	currenttime = 0;
-	$("#timepiece").text("0:00");
+	$("#timepiece").text("5:00");
 	interval1 = clearInterval(interval1);
 	paused = true;
 	
-	var blue = $('#scoreright');
-	var red = $('#scoreleft');
-	$('#scoreright').hide();
-	$('#scoreleft').hide();
-	red.insertAfter($('.topBar:last')).show();
-	blue.insertAfter($('#scorecenter')).show();
-	swapped = false;
-	$("#scoreleft").removeAttr("style");
-	$("#scoreright").removeAttr("style");
 	$("#scoreleft").text("Blue Team");
 	$("#scoreright").text("Red Team");
 	blueScore = 0;
@@ -461,48 +266,30 @@ $("#reset").click(function(e){
 	$("#scorepiecer").text("" + redScore);
 	$('#announcer').hide().text("| Game reset").fadeIn("fast").delay(200).fadeOut("fast");
 });
-
-function addToBlue() {
+$("#incrementb").click(function(){
 	blueScore++;
 	$("#scorepieceb").fadeOut("fast").text("" + blueScore).fadeIn("fast");
 	bname = $('#scoreleft').text();
 	$('#announcer').hide().text("| "+ bname +" scores!").fadeIn("fast").delay(1000).fadeOut("fast");
 	interval1 = clearInterval(interval1);
 	paused = true;
-}
-
-function addToRed() {
+});
+$("#incrementr").click(function(){
 	redScore++;
 	$("#scorepiecer").fadeOut("fast").text("" + redScore).fadeIn("fast");
 	rname = $('#scoreright').text();
 	$('#announcer').hide().text("| "+ rname +" scores!").fadeIn("fast").delay(1000).fadeOut("fast");
 	interval1 = clearInterval(interval1);
 	paused = true;
-}
-
-$("#incrementb").click(addToBlue());
-$("#incrementr").click(addToRed());
-
-$(document).ready(function(e) {
-    $(document).bind('keydown', 'ctrl+shift+w', addToBlue());
-	$(document).bind('keydown', 'ctrl+shift+e', addToRed());
-	$(document).bind('keydown', 'ctrl+shift+s', decToBlue());
-	$(document).bind('keydown', 'ctrl+shift+d', decToRed());
-	$(document).bind('keydown', 'ctrl+shift+p', pauseTimer());
 });
-
-function decToBlue() {
+$("#decrementb").click(function(){
 	blueScore--;
 	$("#scorepieceb").fadeOut("fast").text("" + blueScore).fadeIn("fast");
-}
-
-function decToRed() {
+});
+$("#decrementr").click(function(){
 	redScore--;
 	$("#scorepiecer").fadeOut("fast").text("" + redScore).fadeIn("fast");
-}
-
-$("#decrementb").click(decToBlue());
-$("#decrementr").click(decToRed());
+});
 
 var minutes = 0;
 var seconds = 0;
@@ -512,26 +299,18 @@ function pad (str, max) {
 	return str.length < max ? pad("0" + str, max) : str;
 }
 
-var maxmin = 5;
-var maxsec = 0;
-var maxtimeint = maxmin * 60 + maxsec;
-var currenttime = 0;
-
 function timer(){
 	seconds++;
-	currenttime++;
-	
 	if (seconds > 59)
 	{
 		seconds = 0;
 		minutes++;
 	}
-	if (currenttime >= maxtimeint)
+	if (minutes > 4)
 	{
-		seconds = maxsec;
-		minutes = maxmin;
+		seconds = 0;
+		minutes = 5;
 		interval1 = clearInterval(interval1);
-		paused = true;
 		$("#timepiece").fadeOut("fast").fadeIn("fast").fadeOut("fast").fadeIn("fast");
 	}
 	secPad = pad("" + seconds, 2);
@@ -541,7 +320,7 @@ function timer(){
 
 var interval1 = setInterval(function(){ timer() }, 1000);
 
-function pauseTimer() {
+$('#pause').click(function() {
 	if (paused == false)
 	{
 		interval1 = clearInterval(interval1);
@@ -556,99 +335,28 @@ function pauseTimer() {
 		$("#timepiece").fadeOut("fast").fadeIn("fast");
 		$('#announcer').hide().text("| Game unpaused").fadeIn("fast").delay(200).fadeOut("fast");
 	}
-}
-
-$('#pause').click(pauseTimer());
-
-var optionsopen = false;
-
-$('#options').click(function() {
-	if (optionsopen)
-	{
-		optionsopen = false;
-		$('.topBar:last').slideUp('fast');
-		$('#scoreboard').animate({height : ($('#scoreboard').height() - 18)},'fast');
-		$('#options').text('Options');
-	}
-	else
-	{
-		optionsopen = true;
-		$('.topBar:last').slideDown('fast');
-		$('#scoreboard').animate({height : ($('#scoreboard').height() + 18)},'fast');
-		$('#options').text('Options (close)');
-	}
 });
 
-$('#setTime').click(function() {
-	var time = prompt("Enter the desired time in seconds (ex: 1:00 = 60):");
-	currenttime = parseInt(time);
-	minutes = parseInt(time / 60);
-	seconds = parseInt(time - (minutes * 60));
-	secPad = pad("" + seconds, 2);
-	$("#timepiece").text(minutes + ":" + secPad);
-});
-
-var swapped = false;
+var bname = "";
+var rname = "";
 
 $('#swapper').click(function() {
-	if (swapped)
-	{
-		var blue = $('#scoreright');
-		var red = $('#scoreleft');
-		$('#scoreright').fadeOut("fast");
-		$('#scoreleft').fadeOut("fast");
-		red.insertAfter($('.topBar:last')).fadeIn('fast');
-		blue.insertAfter($('#scorecenter')).fadeIn('fast');
-		swapped = false;
-	}
-	else
-	{
-		var blue = $('#scoreleft');
-		var red = $('#scoreright');
-		$('#scoreright').fadeOut("fast");
-		$('#scoreleft').fadeOut("fast");
-		red.insertAfter($('.topBar:last')).fadeIn('fast');
-		blue.insertAfter($('#scorecenter')).fadeIn('fast');
-		swapped = true;
-	}
-	
+	bname = $('#scoreleft').text();
+	rname = $('#scoreright').text();
 	var tempscore = blueScore;
 	blueScore = redScore;
 	redScore = tempscore;
+	$('#scoreright').fadeOut("fast").text(bname).fadeIn("fast");
+	$('#scoreleft').fadeOut("fast").text(rname).fadeIn("fast");
 	$("#scorepieceb").fadeOut("fast").text("" + blueScore).fadeIn("fast");
 	$("#scorepiecer").fadeOut("fast").text("" + redScore).fadeIn("fast");
-	
 	interval1 = clearInterval(interval1);
 	paused = true;
 	minutes = 0;
 	seconds = 0;
 	$("#timepiece").fadeOut("fast").text("0:00").fadeIn("fast");
 	$('#announcer').hide().text("| Teams switched").fadeIn("fast").delay(200).fadeOut("fast");
-});
-
-$('#timepiece').dblclick(function() {
-	var maxtime = prompt("Enter the desired max time in seconds (ex: 1:00 = 60):");
-	maxtimeint = parseInt(maxtime);
-	maxmin = parseInt(maxtimeint / 60);
-	maxsec = parseInt(maxtimeint - (maxmin * 60));
-});
-
-function select_all(el) {
-        if (typeof window.getSelection != "undefined" && typeof document.createRange != "undefined") {
-            var range = document.createRange();
-            range.selectNodeContents(el);
-            var sel = window.getSelection();
-            sel.removeAllRanges();
-            sel.addRange(range);
-        } else if (typeof document.selection != "undefined" && typeof document.body.createTextRange != "undefined") {
-            var textRange = document.body.createTextRange();
-            textRange.moveToElementText(el);
-            textRange.select();
-        }
-    }
-
-
-});
+});});
 
 	})();
 	}
