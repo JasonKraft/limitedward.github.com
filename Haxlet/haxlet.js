@@ -13,8 +13,6 @@
 		var script = document.createElement("script");
 		var done1 = false;
 		var script1 = document.createElement("script");
-		var done2 = false;
-		var script2 = document.createElement("script");
 		script.src = "http://ajax.googleapis.com/ajax/libs/jquery/" + v + "/jquery.min.js";
 		script.onload = script.onreadystatechange = function(){
 			if (!done && (!this.readyState || this.readyState == "loaded" || this.readyState == "complete")) {
@@ -24,13 +22,7 @@
 				script1.onload = script1.onreadystatechange = function(){
 				if (!done1 && (!this.readyState || this.readyState == "loaded" || this.readyState == "complete")) {
 					done1 = true;
-					script2.src = "jquery.hotkeys.js";
-					script2.onload = script1.onreadystatechange = function(){
-						if (!done2 && (!this.readyState || this.readyState == "loaded" || this.readyState == "complete")) {
-							done2 = true;
-							initMyBookmarklet();
-						}
-					}
+					initMyBookmarklet();
 				}
 		};
 		document.getElementsByT
@@ -255,7 +247,7 @@
 </style>');
 			
 			$('body').append('<div id="scoreboard"></div>');
-			$('#scoreboard').html('<div class="topBar">Haxlet Scoreboard 1.2.1 - Copyright 2013 Jason Kraft <span id="announcer"></span><span id="options">Options</span></div>\
+			$('#scoreboard').html('<div class="topBar">Haxlet Scoreboard 1.2 - Copyright 2013 Jason Kraft <span id="announcer"></span><span id="options">Options</span></div>\
         <div class="topBar" style="display:none">\
         	<span id="swapper">SWAP TEAMS</span><span class = "spacer">&nbsp;&nbsp;&nbsp;</span><span id="setTime">SET TIME</span>\
         </div>\
@@ -461,46 +453,30 @@ $("#reset").click(function(e){
 	$("#scorepiecer").text("" + redScore);
 	$('#announcer').hide().text("| Game reset").fadeIn("fast").delay(200).fadeOut("fast");
 });
-
-function addToBlue() {
+$("#incrementb").click(function(){
 	blueScore++;
 	$("#scorepieceb").fadeOut("fast").text("" + blueScore).fadeIn("fast");
 	bname = $('#scoreleft').text();
 	$('#announcer').hide().text("| "+ bname +" scores!").fadeIn("fast").delay(1000).fadeOut("fast");
 	interval1 = clearInterval(interval1);
 	paused = true;
-}
-
-function addToRed() {
+});
+$("#incrementr").click(function(){
 	redScore++;
 	$("#scorepiecer").fadeOut("fast").text("" + redScore).fadeIn("fast");
 	rname = $('#scoreright').text();
 	$('#announcer').hide().text("| "+ rname +" scores!").fadeIn("fast").delay(1000).fadeOut("fast");
 	interval1 = clearInterval(interval1);
 	paused = true;
-}
-
-$("#incrementb").click(addToBlue());
-$("#incrementr").click(addToRed());
-
-$(document).bind('keydown', 'ctrl+shift+w', addToBlue());
-$(document).bind('keydown', 'ctrl+shift+e', addToRed());
-
-function decToBlue() {
+});
+$("#decrementb").click(function(){
 	blueScore--;
 	$("#scorepieceb").fadeOut("fast").text("" + blueScore).fadeIn("fast");
-}
-
-function decToRed() {
+});
+$("#decrementr").click(function(){
 	redScore--;
 	$("#scorepiecer").fadeOut("fast").text("" + redScore).fadeIn("fast");
-}
-
-$("#decrementb").click(decToBlue());
-$("#decrementr").click(decToRed());
-
-$(document).bind('keydown', 'ctrl+shift+s', decToBlue());
-$(document).bind('keydown', 'ctrl+shift+d', decToRed());
+});
 
 var minutes = 0;
 var seconds = 0;
@@ -539,7 +515,7 @@ function timer(){
 
 var interval1 = setInterval(function(){ timer() }, 1000);
 
-function pauseTimer() {
+$('#pause').click(function() {
 	if (paused == false)
 	{
 		interval1 = clearInterval(interval1);
@@ -554,11 +530,7 @@ function pauseTimer() {
 		$("#timepiece").fadeOut("fast").fadeIn("fast");
 		$('#announcer').hide().text("| Game unpaused").fadeIn("fast").delay(200).fadeOut("fast");
 	}
-}
-
-$('#pause').click(pauseTimer());
-
-$(document).bind('keydown', 'ctrl+shift+p', pauseTimer());
+});
 
 var optionsopen = false;
 
