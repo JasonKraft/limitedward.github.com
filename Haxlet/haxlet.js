@@ -462,74 +462,19 @@ $("#reset").click(function(e){
 	$('#announcer').hide().text("| Game reset").fadeIn("fast").delay(200).fadeOut("fast");
 });
 
-$("#incrementb").click(function(e) {
-	blueScore++;
-	$("#scorepieceb").fadeOut("fast").text("" + blueScore).fadeIn("fast");
-	bname = $('#scoreleft').text();
-	$('#announcer').hide().text("| "+ bname +" scores!").fadeIn("fast").delay(1000).fadeOut("fast");
-	interval1 = clearInterval(interval1);
-	paused = true;
-});
-$("#incrementr").click(function(e) {
-	redScore++;
-	$("#scorepiecer").fadeOut("fast").text("" + redScore).fadeIn("fast");
-	rname = $('#scoreright').text();
-	$('#announcer').hide().text("| "+ rname +" scores!").fadeIn("fast").delay(1000).fadeOut("fast");
-	interval1 = clearInterval(interval1);
-	paused = true;
-});
+$("#incrementb").click(addToBlue());
+$("#incrementr").click(addToRed());
 
 $(document).ready(function(e) {
-    $(document).bind('keydown', 'ctrl+shift+w', function(e) {
-	blueScore++;
-	$("#scorepieceb").fadeOut("fast").text("" + blueScore).fadeIn("fast");
-	bname = $('#scoreleft').text();
-	$('#announcer').hide().text("| "+ bname +" scores!").fadeIn("fast").delay(1000).fadeOut("fast");
-	interval1 = clearInterval(interval1);
-	paused = true;
-});
-	$(document).bind('keydown', 'ctrl+shift+e', function(e) {
-	redScore++;
-	$("#scorepiecer").fadeOut("fast").text("" + redScore).fadeIn("fast");
-	rname = $('#scoreright').text();
-	$('#announcer').hide().text("| "+ rname +" scores!").fadeIn("fast").delay(1000).fadeOut("fast");
-	interval1 = clearInterval(interval1);
-	paused = true;
-});
-	$(document).bind('keydown', 'ctrl+shift+s', function(e) {
-	blueScore--;
-	$("#scorepieceb").fadeOut("fast").text("" + blueScore).fadeIn("fast");
-});
-	$(document).bind('keydown', 'ctrl+shift+d', function(e) {
-	redScore--;
-	$("#scorepiecer").fadeOut("fast").text("" + redScore).fadeIn("fast");
-});
-	$(document).bind('keydown', 'ctrl+shift+p', function(e) {
-	if (paused == false)
-	{
-		interval1 = clearInterval(interval1);
-		paused = true;
-		$("#timepiece").fadeOut("fast").fadeIn("fast");
-		$('#announcer').hide().text("| Game paused").fadeIn("fast").delay(200).fadeOut("fast");
-	}
-	else
-	{
-		interval1 = setInterval(function(){ timer() }, 1000);
-		paused = false;
-		$("#timepiece").fadeOut("fast").fadeIn("fast");
-		$('#announcer').hide().text("| Game unpaused").fadeIn("fast").delay(200).fadeOut("fast");
-	}
-});
+    $(document).bind('keydown', 'ctrl+shift+w', addToBlue());
+	$(document).bind('keydown', 'ctrl+shift+e', addToRed());
+	$(document).bind('keydown', 'ctrl+shift+s', decToBlue());
+	$(document).bind('keydown', 'ctrl+shift+d', decToRed());
+	$(document).bind('keydown', 'ctrl+shift+p', pauseTimer());
 });
 
-$("#decrementb").click(function(e) {
-	blueScore--;
-	$("#scorepieceb").fadeOut("fast").text("" + blueScore).fadeIn("fast");
-});
-$("#decrementr").click(function(e) {
-	redScore--;
-	$("#scorepiecer").fadeOut("fast").text("" + redScore).fadeIn("fast");
-});
+$("#decrementb").click(decToBlue());
+$("#decrementr").click(decToRed());
 
 var minutes = 0;
 var seconds = 0;
@@ -568,22 +513,7 @@ function timer(){
 
 var interval1 = setInterval(function(){ timer() }, 1000);
 
-$('#pause').click(function(e) {
-	if (paused == false)
-	{
-		interval1 = clearInterval(interval1);
-		paused = true;
-		$("#timepiece").fadeOut("fast").fadeIn("fast");
-		$('#announcer').hide().text("| Game paused").fadeIn("fast").delay(200).fadeOut("fast");
-	}
-	else
-	{
-		interval1 = setInterval(function(){ timer() }, 1000);
-		paused = false;
-		$("#timepiece").fadeOut("fast").fadeIn("fast");
-		$('#announcer').hide().text("| Game unpaused").fadeIn("fast").delay(200).fadeOut("fast");
-	}
-});
+$('#pause').click(pauseTimer());
 
 var optionsopen = false;
 
@@ -680,7 +610,7 @@ function select_all(el) {
 
 })();
 
-/*function addToBlue() {
+function addToBlue() {
 	blueScore++;
 	$("#scorepieceb").fadeOut("fast").text("" + blueScore).fadeIn("fast");
 	bname = $('#scoreleft').text();
@@ -723,4 +653,4 @@ function pauseTimer() {
 		$("#timepiece").fadeOut("fast").fadeIn("fast");
 		$('#announcer').hide().text("| Game unpaused").fadeIn("fast").delay(200).fadeOut("fast");
 	}
-}*/
+}
