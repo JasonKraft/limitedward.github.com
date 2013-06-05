@@ -113,7 +113,7 @@
 #redpoints, #bluepoints {
 	width:55px;
 	height:40px;
-	line-height:0px;
+	/*line-height:0px;*/
 	font-size:30px;
 	text-align:center;
 	color:#fff;
