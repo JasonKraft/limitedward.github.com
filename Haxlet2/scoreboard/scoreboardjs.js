@@ -87,7 +87,7 @@ $(document).ready(function(e) { // <-- the document must be ready before doing a
 				break;
 			case "MADRID":
 			case "MATADORS":
-				
+				playSound('madridmatadors', 47000);
 				break;
 			default:
 				playSound('genericgoal', 34000);
