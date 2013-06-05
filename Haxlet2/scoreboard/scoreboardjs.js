@@ -1,5 +1,7 @@
 $(document).ready(function(e) { // <-- the document must be ready before doing anything
 	console.log('Scoreboard loaded!');
+	$('body').append('<div id="scorebody"><div id="scoremain"><div id="scoremaininner"><div id="scoremaincontent" class="left"><div id="redteam" class="left" contenteditable="true" spellcheck="false">Red Team</div><div id="redscore" class="left"><div class="scoreinner"><div class="scoretoggle left"><div class="scoreup">▲</div><div class="scoredown">▼</div></div><div id="redpoints" class="left">0</div></div></div><div id="bluescore" class="left"><div class="scoreinner"><div id="bluepoints" class="left">0</div><div class="scoretoggle left"><div class="scoreup">▲</div><div class="scoredown">▼</div></div></div></div><div id="blueteam" class="left" contenteditable="true" spellcheck="false">Blue Team</div></div><div id="scoretools" class="left"><div id="scoreclose" class="tool"></div><div id="scoresettings" class="tool"></div><div id="scorehelp" class="tool"></div></div></div></div><div id="scorebottom"><div id="scorebottomcontent"><div id="scorebottomleft" class="left">◀</div><div id="scorebottomtext" class="left">Pregame</div><div id="scorebottomright" class="left">▶</div></div></div></div><div id="sound"></div>');
+	$('head').append('<link rel=stylesheet type=text/css href=scoreboard.css>');
 	
 	// -- keyboard tracking --
 	
