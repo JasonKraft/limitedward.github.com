@@ -1,7 +1,7 @@
 $(document).ready(function(e) { // <-- the document must be ready before doing anything
 	console.log('Scoreboard loaded!');
 	$('body').append('<div id="scorebody"><div id="scoremain"><div id="scoremaininner"><div id="scoremaincontent" class="left"><div id="redteam" class="left" contenteditable="true" spellcheck="false">Red Team</div><div id="redscore" class="left"><div class="scoreinner"><div class="scoretoggle left"><div class="scoreup">▲</div><div class="scoredown">▼</div></div><div id="redpoints" class="left">0</div></div></div><div id="bluescore" class="left"><div class="scoreinner"><div id="bluepoints" class="left">0</div><div class="scoretoggle left"><div class="scoreup">▲</div><div class="scoredown">▼</div></div></div></div><div id="blueteam" class="left" contenteditable="true" spellcheck="false">Blue Team</div></div><div id="scoretools" class="left"><div id="scoreclose" class="tool"></div><div id="scoresettings" class="tool"></div><div id="scorehelp" class="tool"></div></div></div></div><div id="scorebottom"><div id="scorebottomcontent"><div id="scorebottomleft" class="left">◀</div><div id="scorebottomtext" class="left">Pregame</div><div id="scorebottomright" class="left">▶</div></div></div></div><div id="sound"></div>');
-	$('head').append('<link rel=stylesheet type=text/css href=scoreboard.css>');
+	$('head').append('<link rel=stylesheet type=text/css href=http://limitedward.github.io/Haxlet2/scoreboard/scoreboardcss.css>');
 	
 	// -- keyboard tracking --
 	
@@ -39,7 +39,7 @@ $(document).ready(function(e) { // <-- the document must be ready before doing a
 	/*setInterval(playSound('file:///Users/JasonKraft/Desktop/HCD%20Stuff/scoreboard/Zombienation.mp3', 22100), 180000);*/
 	
 	function playSound( url, duration ){  
-  		document.getElementById("sound").innerHTML="<audio autoplay><source src=audio/"+url+".mp3 type=audio/mpeg><source src=audio/"+url+".ogg type=audio/ogg></audio>";
+  		document.getElementById("sound").innerHTML="<audio autoplay><source src=http://limitedward.github.io/Haxlet2/scoreboard/audio/"+url+".mp3 type=audio/mpeg><source src=http://limitedward.github.io/Haxlet2/scoreboard/audio/"+url+".ogg type=audio/ogg></audio>";
 		setTimeout(function(){ document.getElementById("sound").innerHTML=""; }, duration);
 	}
 	
@@ -148,13 +148,13 @@ $(document).ready(function(e) { // <-- the document must be ready before doing a
 			settingsopen = true;
 			$('#scorebody').append('<ul id="scoresettingsmenu">\
 			<li><a href="#">Colors</a><ul>\
-				<li><a href="#" class="scorecolor" onclick="$(\'#scoremain\').css(\'background-image\', \'url(scoreboardc-red.png)\');">Red</a></li>\
-				<li><a href="#" class="scorecolor" onclick="$(\'#scoremain\').css(\'background-image\', \'url(scoreboardc-orange.png)\');">Orange</a></li>\
-				<li><a href="#" class="scorecolor" onclick="$(\'#scoremain\').css(\'background-image\', \'url(scoreboardc-yellow.png)\');">Yellow</a></li>\
-				<li><a href="#" class="scorecolor" onclick="$(\'#scoremain\').css(\'background-image\', \'url(scoreboardc-green.png)\');">Green</a></li>\
-				<li><a href="#" class="scorecolor" onclick="$(\'#scoremain\').css(\'background-image\', \'url(scoreboardc-blue.png)\');">Blue</a></li>\
-				<li><a href="#" class="scorecolor" onclick="$(\'#scoremain\').css(\'background-image\', \'url(scoreboardc-\purple.png)\');">Purple</a></li>\
-				<li><a href="#" class="scorecolor" onclick="$(\'#scoremain\').css(\'background-image\', \'url(scoreboardc-pink.png)\');">Pink</a></li>\
+				<li><a href="#" class="scorecolor" onclick="$(\'#scoremain\').css(\'background-image\', \'url(http://limitedward.github.io/Haxlet2/scoreboard/scoreboardc-red.png)\');">Red</a></li>\
+				<li><a href="#" class="scorecolor" onclick="$(\'#scoremain\').css(\'background-image\', \'url(http://limitedward.github.io/Haxlet2/scoreboard/scoreboardc-orange.png)\');">Orange</a></li>\
+				<li><a href="#" class="scorecolor" onclick="$(\'#scoremain\').css(\'background-image\', \'url(http://limitedward.github.io/Haxlet2/scoreboard/scoreboardc-yellow.png)\');">Yellow</a></li>\
+				<li><a href="#" class="scorecolor" onclick="$(\'#scoremain\').css(\'background-image\', \'url(http://limitedward.github.io/Haxlet2/scoreboard/scoreboardc-green.png)\');">Green</a></li>\
+				<li><a href="#" class="scorecolor" onclick="$(\'#scoremain\').css(\'background-image\', \'url(http://limitedward.github.io/Haxlet2/scoreboard/scoreboardc-blue.png)\');">Blue</a></li>\
+				<li><a href="#" class="scorecolor" onclick="$(\'#scoremain\').css(\'background-image\', \'url(http://limitedward.github.io/Haxlet2/scoreboard/scoreboardc-\purple.png)\');">Purple</a></li>\
+				<li><a href="#" class="scorecolor" onclick="$(\'#scoremain\').css(\'background-image\', \'url(http://limitedward.github.io/Haxlet2/scoreboard/scoreboardc-pink.png)\');">Pink</a></li>\
 			</ul>\
 			</li></ul>');
 			$( "#scoresettingsmenu" ).menu({
