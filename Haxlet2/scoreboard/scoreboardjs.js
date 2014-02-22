@@ -89,6 +89,38 @@ $(document).ready(function(e) { // <-- the document must be ready before doing a
 			case "MATADORS":
 				playSound('madridmatadors', 47000);
 				break;
+
+			//--- The new teams ---
+			case "MCGRIDDLES":
+				playSound('genericgoal', 34000);
+				break;
+			case "BROOKLYN":
+				playSound('genericgoal', 34000);
+				break;
+			case "BULLDOGS":
+				playSound('genericgoal', 34000);
+				break;
+			case "NORTH BAY":
+				playSound('genericgoal', 34000);
+				break;
+			case "ANGELS":
+				playSound('genericgoal', 34000);
+				break;
+			case "PROVIDENCE":
+				playSound('genericgoal', 34000);
+				break;
+			case "CHIEFTAINS":
+				playSound('genericgoal', 34000);
+				break;
+			case "TORONTO":
+				playSound('genericgoal', 34000);
+				break;
+			case "HUSKIES":
+				playSound('genericgoal', 34000);
+				break;
+			case "HURRICANES":
+				playSound('genericgoal', 34000);
+				break;
 			default:
 				playSound('genericgoal', 34000);
 		}
