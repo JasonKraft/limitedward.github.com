@@ -100,11 +100,14 @@ $(document).ready(function(e) { // <-- the document must be ready before doing a
 			case "BULLDOGS":
 				playSound('genericgoal', 34000);
 				break;
+			case "NBGA":
+				playSound('nbga', 23000);
+				break;
 			case "NORTH BAY":
-				playSound('nbga', 34000);
+				playSound('nbga', 23000);
 				break;
 			case "ANGELS":
-				playSound('nbga', 34000);
+				playSound('nbga', 23000);
 				break;
 			case "PROVIDENCE":
 				playSound('genericgoal', 34000);
