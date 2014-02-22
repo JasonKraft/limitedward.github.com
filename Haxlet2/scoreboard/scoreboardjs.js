@@ -101,10 +101,10 @@ $(document).ready(function(e) { // <-- the document must be ready before doing a
 				playSound('genericgoal', 34000);
 				break;
 			case "NORTH BAY":
-				playSound('genericgoal', 34000);
+				playSound('nbga', 34000);
 				break;
 			case "ANGELS":
-				playSound('genericgoal', 34000);
+				playSound('nbga', 34000);
 				break;
 			case "PROVIDENCE":
 				playSound('genericgoal', 34000);
