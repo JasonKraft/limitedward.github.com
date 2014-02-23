@@ -122,7 +122,7 @@ $(document).ready(function(e) { // <-- the document must be ready before doing a
 				playSound('genericgoal', 34000);
 				break;
 			case "HURRICANES":
-				playSound('genericgoal', 34000);
+				playSound('tulsa', 53000);
 				break;
 			default:
 				playSound('genericgoal', 34000);
