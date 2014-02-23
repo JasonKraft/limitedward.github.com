@@ -21,6 +21,9 @@
 	height:26px;
 	width:256px;
 	border:none;
+	position:relative;
+	left:50%;
+	margin-left:-128px;
 }
 #scoremain {
 	width:520px;
