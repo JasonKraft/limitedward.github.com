@@ -42,7 +42,7 @@
 	function initMyBookmarklet() {
 		(window.myBookmarklet = function() {
 			// your JavaScript code goes here!// JavaScript Document
-			$('head').append('<link href=\"http://fonts.googleapis.com/css?family=Roboto+Condensed\" rel=\"stylesheet\" type=\"text/css\"><link rel=\"stylesheet\" href=\"http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css\" /><script src=\"http://limitedward.github.io/Haxlet2/scoreboard/scoreboardjs.js\"></script>');
+			$('head').append('<link href=\"http://fonts.googleapis.com/css?family=Roboto+Condensed\" rel=\"stylesheet\" type=\"text/css\"><link rel=\"stylesheet\" href=\"http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css\" /><script src=\"http://limitedward.github.io/Haxlet2_1/scoreboard/scoreboardjs.js\"></script>');
 			
 			// END OF CODE
 	})();
