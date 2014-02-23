@@ -12,10 +12,15 @@
 }
 #scorebody {
 	width:520px;
-	height:90px;
+	height:116px;
 	font-family:Verdana, Geneva, sans-serif;
 	font-size:14px;
 	cursor:move;
+}
+#scorebody iframe {
+	height:26px;
+	width:256px;
+	border:none;
 }
 #scoremain {
 	width:520px;
